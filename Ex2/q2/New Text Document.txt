@@ -1,0 +1,28 @@
+#include "lib_ex2.h"
+/**
+ * Counts from "start" to "end" (inclusive), 
+ * showing progress on the seven segment displays
+ **/
+void count(int start, int end){
+	int cStart = start;
+	int cEnd = end;
+	if(cStart >= 0 && cStart <= 10000){ //does 10000 make sense in WRAMP 10000 = 0x2710
+		if(cEnd >= 0 && cEnd <= 10000){
+			if(cStart <= cEnd || cStart == cEnd){
+				for(cStart; cStart <= cEnd; cStart++){
+					writessd(cStart);
+					delay();
+					return;
+				}
+			}
+			else{
+				for(cStart; cStart >= cEnd; cStart--){
+					writessd(cStart);
+					delay();
+					return;
+				}
+			}
+		}
+	}
+	return;
+}
